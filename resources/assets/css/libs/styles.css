@@ -35,3 +35,8 @@
 .toppad
 {margin-top:20px;
 }
+
+/*************** MASTER TEMPLATE ************************/
+#admin-page{
+    padding-top: 0px;
+}
