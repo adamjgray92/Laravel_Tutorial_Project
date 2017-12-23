@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Photo;
 use App\User;
 use App\Role;
+use Session;
 use App\Http\Requests\AdminUser;
 use App\Http\Requests\AdminUserUpdate;
 use Illuminate\Http\Request;
@@ -59,7 +60,7 @@ class AdminUsersController extends Controller
 
         User::create($input);
 
-        return redirect('admin.users.create');
+        return redirect('admin/users');
     }
 
     /**
@@ -113,6 +114,7 @@ class AdminUsersController extends Controller
         }
 
         $user->update($input);
+        Session::flash('admin_user_edit', 'User has been updated!');
 
         return redirect('admin/users/');
     }
@@ -125,6 +127,13 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+        $photo_id = $user->photo_id;
+        $user->delete();
+        Photo::findOrFail($photo_id)->delete();
+
+        Session::flash('admin_user_delete', 'User has been deleted!');
+
+        return redirect('/admin/users');
     }
 }

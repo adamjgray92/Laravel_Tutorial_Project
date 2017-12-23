@@ -4,6 +4,14 @@
 
     <h1>Users</h1>
 
+    @if(Session::has('admin_user_delete'))
+        <p class="p-3 mb-2 bg-danger text-white">{{session('admin_user_delete')}}</p>
+    @endif
+
+    @if(Session::has('admin_user_edit'))
+        <p class="p-3 mb-2 bg-success text-white">{{session('admin_user_edit')}}</p>
+    @endif
+
     <table class="table">
         <thead>
             <tr>
