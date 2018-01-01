@@ -16,6 +16,8 @@
 
     <link href="{{asset('css/libs.css')}}" rel="stylesheet">
 
+    @yield('styles')
+
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
 
 
@@ -172,11 +174,11 @@
                         <a href="#"><i class="fa fa-wrench fa-fw"></i>Media<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="/media">All Media</a>
+                                <a href="{{ route('admin.media.index') }}">All Media</a>
                             </li>
 
                             <li>
-                                <a href="">Upload Media</a>
+                                <a href="{{ route('admin.media.create') }}">Upload Media</a>
                             </li>
 
                         </ul>
@@ -351,6 +353,7 @@
 <!-- jQuery -->
 <script src="{{asset('js/libs.js')}}"></script>
 
+@yield('scripts')
 
 @yield('footer')
 
